@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="text-center display-4">Employee Form</h2>
+
+  <form #employeeForm="ngForm" (ngSubmit)="onSubmit()">
+    
+    <div class="m-2 p-0">
+      <label for="fullName">Full Name:</label>
+      <input type="text" name="fullName" id="fullName" class="form-control" 
+        placeholder="Full Name" required [(ngModel)]="employee.fullName" #fullName="ngModel">
+      <small class="text-danger" [hidden]="fullName.valid || fullName.pristine">
+        Invalid Full Name.
+      </small>
+    </div>
+    <div class="m-2 p-0">
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" class="form-control"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+        placeholder="Email Address" required [(ngModel)]="employee.email" #email="ngModel">
+      <small class="text-danger" [hidden]="email.valid || email.pristine">
+        Invalid Email.
+      </small>
+    </div>
+    <div class="m-2 p-0">
+      <label for="salary">Salary:</label>
+      <input type="number" name="salary" id="salary" class="form-control"
+        placeholder="Salary" required [(ngModel)]="employee.salary" #salary="ngModel">
+      <small class="text-danger" [hidden]="salary.valid || salary.pristine">
+        Invalid Salary.
+      </small>
+    </div>
+    
+    <button type="submit" class="btn btn-primary float-right m-2" [disabled]="!employeeForm.form.valid">Submit</button>
+    <button type="button" class="btn btn-warning float-right m-2" [routerLink]="['/employees']">Cancel</button>
+  </form>
+
+</div>
